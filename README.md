@@ -17,8 +17,8 @@ Ikuti langkah-langkah ini untuk menyiapkan aplikasi di lingkungan lokal:
 ### Langkah-langkah:
 1. **Clone repository:**
     ```bash
-    git clone https://github.com/RahmatRafiq/Laravel-11-starter-kit-bootstrap5.git
-    cd Laravel-11-starter-kit-bootstrap5
+    git clone https://github.com/RahmatRafiq/Four-best-test.git
+    cd Four-best-test
     ```
 
 2. **Install dependencies:**
