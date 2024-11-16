@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -26,6 +27,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('admin/role-permissions/user', \App\Http\Controllers\UserController::class);
     Route::post('admin/role-permissions/user/json', [\App\Http\Controllers\UserController::class, 'json'])->name('user.json');
+
+    Route::resource('admin/employee', EmployeeController::class);
+    Route::post('admin/employee/json', [EmployeeController::class, 'json'])->name('employee.json');
 });
 
 require __DIR__ . '/auth.php';

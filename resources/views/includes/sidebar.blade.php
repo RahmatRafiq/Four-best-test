@@ -34,7 +34,20 @@
                     </a>
                 </li>
             </li>
-
+            <li class="treeview {{ request()->is('admin/employee*') ? 'active current-page open' : '' }}">
+                <a href="#" class="treeview-toggle">
+                    <i class="bi bi-people"></i>
+                    <span class="menu-text">Employee Management</span>
+                </a>
+                <ul class="treeview-menu" style="{{ request()->is('admin/employee*') ? 'display: block;' : 'display: none;' }}">
+                    <li class="{{ request()->routeIs('employee.index') ? 'active-sub' : '' }}">
+                        <a href="{{ route('employee.index') }}">Employees</a>
+                    </li>
+                    <li class="{{ request()->routeIs('employee.create') ? 'active-sub' : '' }}">
+                        <a href="{{ route('employee.create') }}">Add Employee</a>
+                    </li>
+                </ul>
+            </li>
             {{-- End Admin dashboard --}}
         </ul>
     </div>
