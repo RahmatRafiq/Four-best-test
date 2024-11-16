@@ -1,7 +1,7 @@
-# Dokumentasi Laravel 11 Starter Kit
+# Dokumentasi Four-best-test
 
 ## Pendahuluan
-Ini adalah starter kit Laravel 11 yang dibangun dengan Bootstrap 5. Aplikasi ini menyertakan beberapa library penting untuk manajemen peran, pengelolaan file, dan tabel data interaktif.
+Ini adalah Aplikasi Four-best-test yang dibangun menggunakan starter pack kit yang saya buat secara pribadi
 
 ### Library Utama
 - **Spatie Laravel Permissions**: Mengelola peran dan izin pengguna.
@@ -138,7 +138,4 @@ Dropzoner('#my-dropzone', 'images', {
 
 ---
 
-## Kontributor
-- [Rahmat Rafiq](https://github.com/RahmatRafiq)
-- [Dzyfhuba](https://github.com/Dzyfhuba)
 
