@@ -23,23 +23,30 @@
                     <li class="{{ request()->routeIs('user.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('user.index') }}">Users</a>
                     </li>
+                    <li class="{{ request()->routeIs('position.index') ? 'active current-page' : '' }}">
+                        <a href="{{ route('position.index') }}">
+                            <span class="menu-text">Manajemen Posisi</span>
+                        </a>
+                    </li>
+
                     <li class="{{ request()->routeIs('about-app.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('about-app.index') }}">Tentang Aplikasi</a>
                     </li>
                 </ul>
-                <li class="{{ request()->routeIs('profile.edit') ? 'active current-page' : '' }}">
-                    <a href="{{ route('profile.edit') }}">
-                        <i class="bi bi-person"></i>
-                        <span class="menu-text">Manajemen Profil</span>
-                    </a>
-                </li>
+            <li class="{{ request()->routeIs('profile.edit') ? 'active current-page' : '' }}">
+                <a href="{{ route('profile.edit') }}">
+                    <i class="bi bi-person"></i>
+                    <span class="menu-text">Manajemen Profil</span>
+                </a>
+            </li>
             </li>
             <li class="treeview {{ request()->is('admin/employee*') ? 'active current-page open' : '' }}">
                 <a href="#" class="treeview-toggle">
                     <i class="bi bi-people"></i>
                     <span class="menu-text">Employee Management</span>
                 </a>
-                <ul class="treeview-menu" style="{{ request()->is('admin/employee*') ? 'display: block;' : 'display: none;' }}">
+                <ul class="treeview-menu"
+                    style="{{ request()->is('admin/employee*') ? 'display: block;' : 'display: none;' }}">
                     <li class="{{ request()->routeIs('employee.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('employee.index') }}">Employees</a>
                     </li>
