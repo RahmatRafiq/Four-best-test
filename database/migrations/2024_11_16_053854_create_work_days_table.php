@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('work_days', function (Blueprint $table) {
             $table->id();
-            $table->string('day', 10);
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
+            $table->unsignedBigInteger('employee_id');
+            $table->date('date');
+            $table->time('check_in')->nullable();
+            $table->time('check_out')->nullable();
             $table->timestamps();
         });
     }
