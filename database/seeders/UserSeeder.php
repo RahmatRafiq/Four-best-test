@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $admin->assignRole('admin');
 
         // Create 99 other users for different roles
-        $roles = ['admin', 'editor', 'viewer'];
+        $roles = ['admin', 'staff', 'pegawai'];
         foreach ($roles as $role) {
             for ($i = 0; $i < 33; $i++) {
                 $user = User::create([

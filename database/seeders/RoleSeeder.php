@@ -12,8 +12,8 @@ class RoleSeeder extends Seeder
         // Define roles and their associated permissions
         $roles = [
             'admin' => ['manage_users', 'create_item', 'read_item', 'update_item', 'delete_item'],
-            'editor' => ['create_item', 'read_item', 'update_item'],
-            'viewer' => ['read_item'],
+            'staff' => ['create_item', 'read_item', 'update_item'],
+            'pegawai' => ['read_item'],
         ];
 
         // Create roles and assign permissions
