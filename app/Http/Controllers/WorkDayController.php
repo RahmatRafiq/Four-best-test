@@ -2,63 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WorkDay;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
 class WorkDayController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $workDays = WorkDay::with('position')->get();
+        return view('application.work_days.index', compact('workDays'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $positions = Position::all();
+        return view('application.work_days.create', compact('positions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'position_id' => 'required|exists:positions,id',
+            'date' => 'required|date',
+        ]);
+
+        $position = Position::findOrFail($validated['position_id']);
+
+        WorkDay::create([
+            'position_id' => $validated['position_id'],
+            'date' => $validated['date'],
+            'check_in' => $position->default_check_in,
+            'check_out' => $position->default_check_out,
+        ]);
+
+        return redirect()->route('work-days.index')->with('success', 'Hari kerja berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(WorkDay $workDay)
     {
-        //
+        $positions = Position::all();
+        return view('application.work_days.edit', compact('workDay', 'positions'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, WorkDay $workDay)
     {
-        //
-    }
+        $validated = $request->validate([
+            'position_id' => 'required|exists:positions,id',
+            'date' => 'required|date',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        $position = Position::findOrFail($validated['position_id']);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $workDay->update([
+            'position_id' => $validated['position_id'],
+            'date' => $validated['date'],
+            'check_in' => $position->default_check_in,
+            'check_out' => $position->default_check_out,
+        ]);
+
+        return redirect()->route('work-days.index')->with('success', 'Hari kerja berhasil diperbarui.');
     }
 }

@@ -7,7 +7,8 @@
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="treeview {{ request()->is('mbkm/admin/role-permissions*') ? 'active current-page open' : '' }}">
+
+            <li class="treeview {{ request()->is('admin/role-permissions*') ? 'active current-page open' : '' }}">
                 <a href="#" class="treeview-toggle">
                     <i class="bi bi-person-gear"></i>
                     <span class="menu-text">Manajemen Pengguna</span>
@@ -28,34 +29,40 @@
                             <span class="menu-text">Manajemen Posisi</span>
                         </a>
                     </li>
-
                     <li class="{{ request()->routeIs('about-app.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('about-app.index') }}">Tentang Aplikasi</a>
                     </li>
                 </ul>
+            </li>
             <li class="{{ request()->routeIs('profile.edit') ? 'active current-page' : '' }}">
                 <a href="{{ route('profile.edit') }}">
                     <i class="bi bi-person"></i>
                     <span class="menu-text">Manajemen Profil</span>
                 </a>
             </li>
-            </li>
-            <li class="treeview {{ request()->is('admin/employee*') ? 'active current-page open' : '' }}">
+
+            <li
+                class="treeview {{ request()->is('admin/employee*') || request()->is('admin/work-days*') ? 'active current-page open' : '' }}">
                 <a href="#" class="treeview-toggle">
                     <i class="bi bi-people"></i>
                     <span class="menu-text">Employee Management</span>
                 </a>
                 <ul class="treeview-menu"
-                    style="{{ request()->is('admin/employee*') ? 'display: block;' : 'display: none;' }}">
+                    style="{{ request()->is('admin/employee*') || request()->is('admin/work-days*') ? 'display: block;' : 'display: none;' }}">
                     <li class="{{ request()->routeIs('employee.index') ? 'active-sub' : '' }}">
                         <a href="{{ route('employee.index') }}">Employees</a>
                     </li>
                     <li class="{{ request()->routeIs('employee.create') ? 'active-sub' : '' }}">
                         <a href="{{ route('employee.create') }}">Add Employee</a>
                     </li>
+                    <li class="{{ request()->routeIs('work-days.index') ? 'active-sub' : '' }}">
+                        <a href="{{ route('work-days.index') }}">Work Days</a>
+                    </li>
+                    <li class="{{ request()->routeIs('work-days.create') ? 'active-sub' : '' }}">
+                        <a href="{{ route('work-days.create') }}">Add Work Day</a>
+                    </li>
                 </ul>
             </li>
-            {{-- End Admin dashboard --}}
         </ul>
     </div>
     <!-- Sidebar menu ends -->

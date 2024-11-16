@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/position', \App\Http\Controllers\PositionController::class);
     Route::post('admin/position/json', [\App\Http\Controllers\PositionController::class, 'json'])->name('position.json');
 
+    Route::resource('admin/work-days', \App\Http\Controllers\WorkDayController::class);
+    Route::post('admin/work-days/json', [\App\Http\Controllers\WorkDayController::class, 'json'])->name('work-days.json');
+
 });
 
 require __DIR__ . '/auth.php';

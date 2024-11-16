@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50)->unique();
+            $table->time('default_check_in')->nullable();
+            $table->time('default_check_out')->nullable();
             $table->timestamps();
         });
     }

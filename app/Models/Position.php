@@ -5,13 +5,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Position extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'default_check_in', 'default_check_out'];
 
     public function employees()
     {
         return $this->hasMany(Employee::class);
     }
-
+    public function workDays()
+    {
+        return $this->hasMany(WorkDay::class);
+    }
     protected $casts = [
         'created_at' => 'datetime:d-m-Y H:i:s',
         'updated_at' => 'datetime:d-m-Y H:i:s',

@@ -51,6 +51,8 @@ class PositionController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:positions',
+            'default_check_in' => 'nullable|date_format:H:i',
+            'default_check_out' => 'nullable|date_format:H:i',
         ]);
 
         Position::create($validatedData);
@@ -73,6 +75,8 @@ class PositionController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:positions,name,' . $position->id,
+            'default_check_in' => 'nullable|date_format:H:i',
+            'default_check_out' => 'nullable|date_format:H:i',
         ]);
 
         $position->update($validatedData);
