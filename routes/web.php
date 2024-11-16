@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeSalaryController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -37,6 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/work-days', \App\Http\Controllers\WorkDayController::class);
     Route::post('admin/work-days/json', [\App\Http\Controllers\WorkDayController::class, 'json'])->name('work-days.json');
 
+    Route::get('attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('attendance/create', [AttendanceController::class, 'create'])->name('attendance.create');
+    Route::post('attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+
+    Route::get('salary/calculate/{employeeId}', [EmployeeSalaryController::class, 'calculateSalary'])->name('salary.calculate');
+    Route::get('salary', [EmployeeSalaryController::class, 'index'])->name('salary.index');
 });
 
 require __DIR__ . '/auth.php';

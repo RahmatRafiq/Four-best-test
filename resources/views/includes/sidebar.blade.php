@@ -34,6 +34,7 @@
                     </li>
                 </ul>
             </li>
+
             <li class="{{ request()->routeIs('profile.edit') ? 'active current-page' : '' }}">
                 <a href="{{ route('profile.edit') }}">
                     <i class="bi bi-person"></i>
@@ -63,7 +64,38 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="treeview {{ request()->is('attendance*') ? 'active current-page open' : '' }}">
+                <a href="#" class="treeview-toggle">
+                    <i class="bi bi-clock-history"></i>
+                    <span class="menu-text">Attendance</span>
+                </a>
+                <ul class="treeview-menu"
+                    style="{{ request()->is('attendance*') ? 'display: block;' : 'display: none;' }}">
+                    <li class="{{ request()->routeIs('attendance.index') ? 'active-sub' : '' }}">
+                        <a href="{{ route('attendance.index') }}">Attendance Records</a>
+                    </li>
+                    <li class="{{ request()->routeIs('attendance.create') ? 'active-sub' : '' }}">
+                        <a href="{{ route('attendance.create') }}">Add Attendance</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="treeview {{ request()->is('salary*') ? 'active current-page open' : '' }}">
+                <a href="#" class="treeview-toggle">
+                    <i class="bi bi-cash-stack"></i>
+                    <span class="menu-text">Salary Management</span>
+                </a>
+                <ul class="treeview-menu" style="{{ request()->is('salary*') ? 'display: block;' : 'display: none;' }}">
+                    <li class="{{ request()->routeIs('salary.index') ? 'active-sub' : '' }}">
+                        <a href="{{ route('salary.index') }}">Salary Records</a>
+                    </li>
+                    <li class="{{ request()->routeIs('salary.calculate') ? 'active-sub' : '' }}">
+                        <a href="{{ route('salary.calculate', ['employeeId' => 1]) }}">Calculate Salary (Example)</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
-    <!-- Sidebar menu ends -->
 </nav>
